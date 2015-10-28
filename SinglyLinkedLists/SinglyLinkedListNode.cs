@@ -60,7 +60,38 @@ namespace SinglyLinkedLists
 
         public bool IsLast()
         {
-            throw new NotImplementedException();
+            if (this.Next == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool Equals()
+        {
+            return true;
+        }
+
+
+        public override string ToString()
+        {
+            return value;
+        }
+
+        new public static bool Equals(object objA, object objB)
+        {
+            if (objA == objB)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }
