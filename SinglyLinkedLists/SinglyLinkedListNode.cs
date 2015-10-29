@@ -44,6 +44,11 @@ namespace SinglyLinkedLists
             return node1.CompareTo(node2) > 0;
         }
 
+        public static implicit operator string (SinglyLinkedListNode v)
+        {
+            return v.Value;
+        }
+
         public SinglyLinkedListNode(string value)
         {
             this.value = value;   
@@ -72,26 +77,26 @@ namespace SinglyLinkedLists
 
         public static bool Equals()
         {
-            return true;
+             return true;
         }
 
+        public override bool Equals(object obj)
+        {
+            SinglyLinkedListNode nodeObj = obj as SinglyLinkedListNode;
+            if(nodeObj == null)
+            {
+                return false;
+            }
+            else
+            {
+                return Value.Equals(nodeObj.Value);
+            }
+            
+        }
 
         public override string ToString()
         {
             return value;
-        }
-
-        new public static bool Equals(object objA, object objB)
-        {
-            if (objA == objB)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
         }
     }
 }

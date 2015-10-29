@@ -70,7 +70,7 @@ namespace UnitTestSinglyLinkedLists
         public void NodeEqualityWithString()
         {
             SinglyLinkedListNode node1 = new SinglyLinkedListNode("foo");
-            Assert.AreNotEqual(node1, "foo");
+             Assert.AreNotEqual(node1, "foo");
         }
 
         [TestMethod]
