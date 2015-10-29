@@ -19,7 +19,8 @@ namespace SinglyLinkedLists
             set { if (this == value)
                 {
                     throw new ArgumentException();
-                } else
+                }
+                else
                 {
                     next = value;  
                 }
@@ -44,11 +45,6 @@ namespace SinglyLinkedLists
             return node1.CompareTo(node2) > 0;
         }
 
-        public static implicit operator string (SinglyLinkedListNode v)
-        {
-            return v.Value;
-        }
-
         public SinglyLinkedListNode(string value)
         {
             this.value = value;   
@@ -60,38 +56,46 @@ namespace SinglyLinkedLists
         // READ: http://msdn.microsoft.com/en-us/library/system.icomparable.compareto.aspx
         public int CompareTo(Object obj)
         {
-            throw new NotImplementedException();
+            if (obj == null) return 1;
+
+            SinglyLinkedListNode other = obj as SinglyLinkedListNode;
+            if (other != null)
+            {
+                return this.value.CompareTo(other.value);
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+                
+        }
+
+        public override bool Equals(object obj)
+        {
+            SinglyLinkedListNode other = obj as SinglyLinkedListNode;
+            if (other == null)
+            {
+                return false;
+            }
+            else
+            {
+                return (this.Value == other.Value);
+            }
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Value.GetHashCode();
         }
 
         public bool IsLast()
         {
-            if (this.Next == null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return (Next == null);
         }
 
         public static bool Equals()
         {
              return true;
-        }
-
-        public override bool Equals(object obj)
-        {
-            SinglyLinkedListNode nodeObj = obj as SinglyLinkedListNode;
-            if(nodeObj == null)
-            {
-                return false;
-            }
-            else
-            {
-                return Value.Equals(nodeObj.Value);
-            }
-            
         }
 
         public override string ToString()

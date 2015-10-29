@@ -7,7 +7,6 @@ namespace SinglyLinkedLists
 {
     public class SinglyLinkedList
     {
-        private string first;
         private SinglyLinkedListNode firstNode;
 
         public SinglyLinkedList()
