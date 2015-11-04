@@ -31,6 +31,7 @@ namespace SinglyLinkedLists
         public string Value 
         {
             get { return value; }
+            set { this.value = value; }
         }
 
         public static bool operator <(SinglyLinkedListNode node1, SinglyLinkedListNode node2)
@@ -56,31 +57,20 @@ namespace SinglyLinkedLists
         // READ: http://msdn.microsoft.com/en-us/library/system.icomparable.compareto.aspx
         public int CompareTo(Object obj)
         {
-            if (obj == null) return 1;
-
             SinglyLinkedListNode other = obj as SinglyLinkedListNode;
-            if (other != null)
+            if(other != null)
             {
-                return this.value.CompareTo(other.value);
+                return this.Value.CompareTo(other.Value);
             }
             else
             {
-                throw new ArgumentException();
-            }
-                
+                return 1;
+            }  
         }
 
         public override bool Equals(object obj)
         {
-            SinglyLinkedListNode other = obj as SinglyLinkedListNode;
-            if (other == null)
-            {
-                return false;
-            }
-            else
-            {
-                return (this.Value == other.Value);
-            }
+            return (this.CompareTo(obj) == 0);
         }
 
         public override int GetHashCode()
