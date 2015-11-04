@@ -183,7 +183,25 @@ namespace SinglyLinkedLists
 
         public bool IsSorted()
         {
-            throw new NotImplementedException();
+            if(Count() == 0)
+            {
+                return true;
+            }
+
+            SinglyLinkedListNode left = firstNode;
+            SinglyLinkedListNode right = firstNode.Next;
+
+            while (right != null)
+            {
+                if (left > right)
+                {
+                    return false;
+                }
+
+                left = right;
+                right = left.Next;
+            }
+                return true;
         }
 
         // HINT 1: You can extract this functionality (finding the last item in the list) from a method you've already written!
@@ -225,7 +243,45 @@ namespace SinglyLinkedLists
 
         public void Sort()
         {
-            throw new NotImplementedException();
+            if(Count() == 0)
+            {
+                return;
+            }
+
+                SinglyLinkedListNode current = firstNode;
+                SinglyLinkedListNode next = firstNode.Next;
+                SinglyLinkedListNode previous = null;
+                bool swapOccurred = false;
+                while (next != null)
+                {
+                    if (current > next)
+                    {
+                        SwapWithNext(previous, current);
+                        swapOccurred = true;
+                    }
+                    previous = current;
+                    current = next;
+                    next = current.Next;
+                }
+            if (swapOccurred)
+            {
+                Sort();
+            }
+        }
+
+        public void SwapWithNext(SinglyLinkedListNode previous, SinglyLinkedListNode swapee)
+        {
+            SinglyLinkedListNode swapWith = swapee.Next;
+            if (previous == null)
+            {
+                firstNode = swapWith;
+            } else
+            {
+                previous.Next = swapWith;
+
+            }
+            swapee.Next = swapWith.Next;
+            swapWith.Next = swapee;
         }
 
         public string[] ToArray()
